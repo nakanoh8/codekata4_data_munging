@@ -15,7 +15,7 @@ with open('./wether2.csv') as f:
     min_tempatures = []
     for row in rows:
         min_tempatures.append(float(row[3]))
-    print(min_tempatures)
-    print(min(min_tempatures))
+    min_min_tempature = min(min_tempatures)
 
-    # print(rows)
+    result_row = [row[0] for row in rows if row[3] == str(min_min_tempature)][0]
+    print(result_row)

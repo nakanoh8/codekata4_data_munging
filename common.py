@@ -11,3 +11,9 @@ def get_rows(csv_name):
                 continue
             rows.append(row)
         return rows
+
+def get_rows_sorted(csv_name, key):
+    return sorted(get_rows(csv_name), key=key)
+
+def print_first_row_target_column(rows_sorted, target_column):
+    print(rows_sorted[0][target_column])

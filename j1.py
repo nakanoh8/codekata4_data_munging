@@ -11,6 +11,7 @@ with open('./j1.csv') as f:
             continue
         sa = abs(int(row[7]) - int(row[8]))
         rows.append(row)
-    pprint(sorted(rows))
-    pprint(rows)
+    pprint(sorted(rows, key=lambda row: abs(int(row[7]) - int(row[8]))))
+
+    # key=lambda student: student[2]
 

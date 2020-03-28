@@ -5,14 +5,15 @@ team_name = 1
 kachiten = 7
 shitten = 8
 
-def get_rows_sorted():
+def get_rows_sorted(csv_name, key):
+    return sorted(get_rows(csv_name), key=key)
 
 def get_sa(row):
     sa = abs(int(row[kachiten]) - int(row[shitten]))
     return sa
 
 def main():
-    rows_sorted = sorted(get_rows('./j1.csv'), key=get_sa)
+    rows_sorted = get_rows_sorted('./j1.csv', get_sa)
     print(rows_sorted[0][team_name])
 
 main()

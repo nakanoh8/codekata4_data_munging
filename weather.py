@@ -1,5 +1,8 @@
 import csv
-import pprint
+from pprint import pprint
+
+def get_min_tempature(row):
+    return float(row[3])
 
 # FIXME: CSVリーダーでヘッダーを無視するようにする
 with open('./wether2.csv') as f:
@@ -11,11 +14,5 @@ with open('./wether2.csv') as f:
             continue
         rows.append(row)
 
-    # 最低気温日を探す
-    min_tempatures = []
-    for row in rows:
-        min_tempatures.append(float(row[3]))
-    min_min_tempature = min(min_tempatures)
-
-    result_row = [row[0] for row in rows if row[3] == str(min_min_tempature)][0]
-    print(result_row)
+    rows_sorted = sorted(rows, key=get_min_tempature)
+    print(rows_sorted[0][0])

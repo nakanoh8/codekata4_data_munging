@@ -6,6 +6,10 @@ team_name = 1
 kachiten = 7
 shitten = 8
 
+def get_sa(row):
+    sa = abs(int(row[kachiten]) - int(row[shitten]))
+    return sa
+
 with open('./j1.csv') as f:
     # データ読み込み
     reader = csv.reader(f)
@@ -15,5 +19,5 @@ with open('./j1.csv') as f:
             continue
         rows.append(row)
 
-    rows_sorted = sorted(rows, key=lambda row: abs(int(row[kachiten]) - int(row[shitten])))
+    rows_sorted = sorted(rows, key=get_sa)
     print(rows_sorted[0][team_name])

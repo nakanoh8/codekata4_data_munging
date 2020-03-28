@@ -1,11 +1,14 @@
 import csv
 from pprint import pprint
 
-def get_min_tempature(row):
-    return float(row[3])
+min_temperature = 3
+date = 0
+
+def get_min_temperature(row):
+    return float(row[min_temperature])
 
 # FIXME: CSVリーダーでヘッダーを無視するようにする
-with open('./wether2.csv') as f:
+with open('./weather.csv') as f:
     # データ読み込み
     reader = csv.reader(f)
     rows = []
@@ -14,5 +17,5 @@ with open('./wether2.csv') as f:
             continue
         rows.append(row)
 
-    rows_sorted = sorted(rows, key=get_min_tempature)
-    print(rows_sorted[0][0])
+    rows_sorted = sorted(rows, key=get_min_temperature)
+    print(rows_sorted[0][date])

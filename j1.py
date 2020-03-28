@@ -10,14 +10,28 @@ def get_sa(row):
     sa = abs(int(row[kachiten]) - int(row[shitten]))
     return sa
 
-with open('./j1.csv') as f:
-    # データ読み込み
-    reader = csv.reader(f)
-    rows = []
-    for i, row in enumerate(reader):
-        if i == 0:
-            continue
-        rows.append(row)
+def get_rows():
+    with open('./j1.csv') as f:
+        # データ読み込み
+        reader = csv.reader(f)
+        rows = []
+        for i, row in enumerate(reader):
+            if i == 0:
+                continue
+            rows.append(row)
+        return rows
 
-    rows_sorted = sorted(rows, key=get_sa)
+# with open('./j1.csv') as f:
+#     # データ読み込み
+#     reader = csv.reader(f)
+#     rows = []
+#     for i, row in enumerate(reader):
+#         if i == 0:
+#             continue
+#         rows.append(row)
+
+def main():
+    rows_sorted = sorted(get_rows(), key=get_sa)
     print(rows_sorted[0][team_name])
+
+main()
